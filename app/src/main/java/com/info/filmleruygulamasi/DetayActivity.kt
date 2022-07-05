@@ -2,6 +2,7 @@ package com.info.filmleruygulamasi
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detay.*
 
 class DetayActivity : AppCompatActivity() {
@@ -16,7 +17,8 @@ class DetayActivity : AppCompatActivity() {
         textViewFilmYil.text = (film.film_yil).toString()
         textViewYonetmen.text = film.yonetmen.yonetmen_ad
 
-        imageViewResim.setImageResource(resources.getIdentifier(film.film_resim
-            ,"drawable",packageName))
+        val url = "http://kasimadalan.pe.hu/filmler/resimler/${film.film_resim}"
+
+        Picasso.get().load(url).into(imageViewResim)
     }
 }

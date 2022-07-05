@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
 class FilmlerAdapter(private val mContext:Context,private val filmlerListe:List<Filmler>)
     : RecyclerView.Adapter<FilmlerAdapter.CardTasarimTutucu>() {
@@ -41,8 +42,9 @@ class FilmlerAdapter(private val mContext:Context,private val filmlerListe:List<
 
         holder.textViewFilmAd.text = film.film_ad
 
-        holder.imageViewFilmResim.setImageResource(mContext.resources.getIdentifier(film.film_resim
-            ,"drawable",mContext.packageName))
+        val url = "http://kasimadalan.pe.hu/filmler/resimler/${film.film_resim}"
+
+        Picasso.get().load(url).into(holder.imageViewFilmResim)
 
         holder.film_card.setOnClickListener {
 
